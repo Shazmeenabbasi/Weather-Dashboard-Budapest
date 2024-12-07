@@ -12,6 +12,8 @@ services:
       - FLASK_ENV=development
     depends_on:
       - frontend
+    networks:
+      - internal
 
   frontend:
     build:
@@ -20,3 +22,7 @@ services:
       - "3000:80"  # Adjust port if needed
     volumes:
       - ./frontend:/usr/share/nginx/html
+    networks:
+      - internal
+networks:
+  internal:
