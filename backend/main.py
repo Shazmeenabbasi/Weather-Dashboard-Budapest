@@ -3,7 +3,9 @@ import requests
 import os
 
 app = Flask(__name__)
-
+@app.route('/', methods=['GET'] )
+def home ():
+    return {"message" :"Hello"}
 @app.route('/weather', methods=['GET'])
 def get_weather():
     api_key = os.getenv('WEATHER_API_KE', 'fec734c51bd96203d583749fb62d52e6')
