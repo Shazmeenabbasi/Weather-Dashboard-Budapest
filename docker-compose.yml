@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.9"  # Ensure you use a compatible version
 
 services:
   backend:
@@ -6,19 +6,17 @@ services:
       context: ./backend
     ports:
       - "5000:5000"
+    volumes:
+      - ./backend:/app
     environment:
-      - WEATHER_API_KE=${fec734c51bd96203d583749fb62d52e6}
-    networks:
-      - weather-network
+      - FLASK_ENV=development
+    depends_on:
+      - frontend
 
   frontend:
     build:
       context: ./frontend
     ports:
-      - "5000:5000"
-    networks:
-      - weather-network
-
-networks:
-  weather-network:
-    driver: bridge
+      - "3000:80"  # Adjust port if needed
+    volumes:
+      - ./frontend:/usr/share/nginx/html
