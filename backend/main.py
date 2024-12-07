@@ -1,12 +1,18 @@
 from flask import Flask, jsonify
+from flask_cors import CORS, cross_origin
 import requests
 import os
 
 app = Flask(__name__)
+CORS(app, support_credentials=True)
+
 @app.route('/', methods=['GET'] )
+@cross_origin(supports_credentials=True)
 def home ():
     return {"message" :"Hello"}
+
 @app.route('/weather', methods=['GET'])
+@cross_origin(supports_credentials=True)
 def get_weather():
     api_key = os.getenv('WEATHER_API_KE', 'fec734c51bd96203d583749fb62d52e6')
     city = "Budapest"
