@@ -1,11 +1,21 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    background: #f0f8ff;
+    color: #333;
 }
 
-h1 {
-    color: #333;
+.container {
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.logo {
+    width: 100px;
+    margin-bottom: 20px;
+}
+
+#weather {
+    margin-top: 20px;
+    font-size: 1.2em;
 }
