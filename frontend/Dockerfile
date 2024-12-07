@@ -1,12 +1,11 @@
-# Use an official Node.js runtime (or a simple HTTP server)
-FROM node:18
+# Use an official Node.js runtime for serving static files
+FROM nginx:alpine
 
-# Set the working directory
-WORKDIR /app
+# Copy the static files to the NGINX web directory
+COPY . /usr/share/nginx/html
 
-# Copy frontend files
-COPY . .
+# Expose the NGINX port
+EXPOSE 80
 
-# Expose port 3000 for the frontend
-EXPOSE 3000
-CMD ["npx", "serve", "."]
+# Start NGINX
+CMD ["nginx", "-g", "daemon off;"]
