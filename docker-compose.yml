@@ -1,15 +1,24 @@
-version: '3'
-services:
-  frontend:
-    build: ./frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
+version: '3.8'
 
+services:
   backend:
-    build: ./backend
+    build:
+      context: ./backend
     ports:
       - "5000:5000"
     environment:
-      - WEATHER_API_KEY=fec734c51bd96203d583749fb62d52e6
+      - WEATHER_API_KE=${fec734c51bd96203d583749fb62d52e6}
+    networks:
+      - weather-network
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "8080:80"
+    networks:
+      - weather-network
+
+networks:
+  weather-network:
+    driver: bridge
