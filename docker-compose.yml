@@ -19,7 +19,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "3000:80"  # Adjust port if needed
+      - "3000:80"
     volumes:
       - ./frontend:/usr/share/nginx/html
     networks:
